@@ -12,7 +12,7 @@ function Sensor () {
       }, [id]);
 
     return <div>
-        {sensor.map(data =>
+        {sensor && sensor.map(data =>
             <div>
                 <h2>Sensor {data.id}</h2>
                 <h3>Temp {data.temp}</h3>

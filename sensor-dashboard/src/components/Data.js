@@ -18,9 +18,9 @@ function Data () {
     return <div>
         <h2>Data Dashboard</h2>
         <ul>
-            {sensorData.map(sensor => (
+            {sensorData.map(sensorId => (
                 <li>
-                    <Link to={"/data/" + sensor.id}>Sensor {sensor.id}</Link>
+                    <Link to={"/data/" + sensorId}>Sensor {sensorId}</Link>
                 </li>
             ))}
         </ul>
