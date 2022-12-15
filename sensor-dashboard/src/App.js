@@ -1,6 +1,6 @@
 import './App.css';
 import About from './components/About';
-import Home from './components/Home';
+// import Home from './components/Home';
 import Data from './components/Data';
 import {
   BrowserRouter as Router,
@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <header className="App-header">
-        <h1>HERBI</h1>
+        <h1>Sensor Dashboard</h1>
       </header>
       <body>
         <ul>
@@ -29,7 +29,7 @@ function App() {
         </ul>
         
         <Routes>
-          <Route exact path='/' element={< Home />}></Route>
+          {/* <Route exact path='/' element={< Home />}></Route> */}
           <Route exact path='/about' element={< About />}></Route>
           <Route path='/data/*' element={< Data />}></Route>
         </Routes>

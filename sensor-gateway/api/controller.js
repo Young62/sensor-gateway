@@ -1,6 +1,15 @@
 'use strict';
 
+const sqlite3 = require('sqlite3');
+const db = new sqlite3.Database('../sesnsor.db');
 var properties = require('../package.json');
+
+
+var sensors = [
+    {id: 1, temp: 3, location: [1, 2]},
+    {id: 2, temp: 4, location: [2, 4]}
+]
+
 
 var controllers = {
    about: function(req, res) {
@@ -10,13 +19,20 @@ var controllers = {
        }
        res.json(aboutInfo);
    },
-   getDistance: function(req, res) {
-                var distanceInfo = [
-                        {id: 1, distance: 3},
-                        {id: 2, distance: 4}
-                ]
-                res.json(distanceInfo)
-        }
+   getSensors: function(req, res) {
+        res.json(sensors)
+    },
+    getSensor: function(req, res) {
+        console.log('the request', req.params);
+         var selectedSensors = sensors.filter(sensor => sensor.id == req.params.id);
+         console.log('selectedSensors:', selectedSensors);
+         res.json(selectedSensors);
+     },
+     postSensor: function(req, res) {
+        var sensor = req.body;
+        sensors.push(sensor);
+        res.json({status: 'accepted'});
+     }
 };
 
 module.exports = controllers;

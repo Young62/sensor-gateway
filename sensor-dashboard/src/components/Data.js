@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { getData } from '../services/dataService';
+import { getSensors, postSensorData } from '../services/dataService';
 import Sensor from './Sensor';
 import {
   Link,
@@ -10,29 +10,25 @@ import {
   
 function Data () {
     const [sensorData, setServiceData] = useState([]);
-    const [selectedSensor, setSelectedSensor] = useState();
   
     useEffect(() => {
-      getData().then(res => setServiceData(res.data));
+      getSensors().then(res => setServiceData(res.data));
     }, [sensorData]);
-
-    function sensorClicked(sensor) {
-      console.log('Clicked Sensor', sensor);
-      setSelectedSensor(sensor);
-    }
 
     return <div>
         <h2>Data Dashboard</h2>
         <ul>
             {sensorData.map(sensor => (
                 <li>
-                    <Link to={"/data/" + sensor.id} onClick={() => sensorClicked(sensor)}>Sensor {sensor.id}</Link>
+                    <Link to={"/data/" + sensor.id}>Sensor {sensor.id}</Link>
                 </li>
             ))}
         </ul>
+
+        <button onClick={() => postSensorData(1, 92.5, [1, 4])}>TEST</button>
         
         <Routes>
-          <Route path='/:id' element={< Sensor sensor={selectedSensor} />}></Route>
+          <Route path='/:id' element={< Sensor />}></Route>
         </Routes>
         
     </div>
