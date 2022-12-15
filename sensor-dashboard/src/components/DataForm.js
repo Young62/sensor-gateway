@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useReducer } from "react";
+import { postSensorData } from '../services/dataService';
 
 const formReducer = (state, event) => {
     return {
@@ -14,7 +15,10 @@ function DataForm () {
     const handleSubmit = event => {
       event.preventDefault();
      setSubmitting(true);
-  
+     
+     postSensorData(formData.id, formData.temp, formData.location);
+
+      // TODO tie submitting to server acceptance
      setTimeout(() => {
        setSubmitting(false);
      }, 3000)
@@ -22,8 +26,8 @@ function DataForm () {
 
    const handleChange = event => {
         setFormData({
-        name: event.target.name,
-        value: event.target.value,
+          name: event.target.name,
+          value: event.target.value,
         });
     }
   
@@ -43,8 +47,16 @@ function DataForm () {
         <form onSubmit={handleSubmit}>
           <fieldset>
             <label>
-              <p>Name</p>
-              <input name="name" onChange={handleChange} />
+              <p>Id</p>
+              <input name="id" onChange={handleChange} />
+            </label>
+            <label>
+              <p>Temp</p>
+              <input name="temp" onChange={handleChange} />
+            </label>
+            <label>
+              <p>Location</p>
+              <input name="location" onChange={handleChange} />
             </label>
           </fieldset>
           <button type="submit">Submit</button>

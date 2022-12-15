@@ -12,12 +12,13 @@ function Sensor () {
       }, [id]);
 
     return <div>
-        {sensor &&
+        {sensor.map(data =>
             <div>
-                <h2>Sensor {sensor[0].id}</h2>
-                <h3>Distance {sensor[0].temp}</h3>
+                <h2>Sensor {data.id}</h2>
+                <h3>Temp {data.temp}</h3>
+                <h3>Location {data.location}</h3>
             </div>
-        }
+        )}
     </div>
 }
 export default Sensor;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { getSensors, postSensorData } from '../services/dataService';
+import { getSensors } from '../services/dataService';
 import Sensor from './Sensor';
 import {
   Link,
@@ -24,8 +24,6 @@ function Data () {
                 </li>
             ))}
         </ul>
-
-        <button onClick={() => postSensorData(1, 92.5, [1, 4])}>TEST</button>
         
         <Routes>
           <Route path='/:id' element={< Sensor />}></Route>
