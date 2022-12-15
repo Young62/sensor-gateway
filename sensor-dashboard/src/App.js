@@ -4,7 +4,6 @@ import DataForm from './components/DataForm';
 import Data from './components/Data';
 import {
   BrowserRouter as Router,
-  Link,
   NavLink,
   Route,
   Routes
@@ -22,14 +21,13 @@ function App() {
           <NavLink to="/about">About</NavLink>
         </div>
       </header>
-      <body>
-        
+      <main>
         <Routes>
           <Route exact path='/about' element={< About />}></Route>
           <Route path='/data/*' element={< Data />}></Route>
           <Route exact path='/create' element={< DataForm />}></Route>
         </Routes>
-      </body>
+      </main>
     </Router>
   );
 }

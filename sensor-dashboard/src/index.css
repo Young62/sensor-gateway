@@ -1,3 +1,7 @@
+:root {
+  --background: #f0e0a0;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -16,10 +20,9 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #c0c0e0;
-  color: #404040;
+  background-color: #c0a060;
+  color: #6060c0;
   padding-top: 24px;
-  margin-bottom: 36px;
 }
 
 .App-header h1 {
@@ -43,15 +46,19 @@ code {
 }
 
 .App-header div a:hover {
-  background-color: #c08040;
+  background-color: var(--background);
   color: #c0c0e0;
 }
 
 .App-header div a.active {
-  background-color: #c08040;
+  background-color: var(--background);
   color: #4060c0;
 }
 
-body {
-  background-color: #f0f0f0;
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--background);
 }

@@ -10,10 +10,10 @@ function DataForm () {
         <h1>Create a New Sensor</h1>
         <form onSubmit={handleSubmit}>
             <fieldset>
-            <label>
-                <p>Location</p>
-                <input name="location" />
-            </label>
+                <label>
+                    <p>Location X</p>
+                    <input name="locationX" />
+                </label>
             </fieldset>
             <button type="submit">Submit</button>
         </form>
