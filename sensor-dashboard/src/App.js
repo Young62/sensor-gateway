@@ -1,10 +1,11 @@
 import './App.css';
 import About from './components/About';
-// import Home from './components/Home';
+import DataForm from './components/DataForm';
 import Data from './components/Data';
 import {
   BrowserRouter as Router,
   Link,
+  NavLink,
   Route,
   Routes
 } from 'react-router-dom';
@@ -14,24 +15,19 @@ function App() {
     <Router>
       <header className="App-header">
         <h1>Sensor Dashboard</h1>
+
+        <div>
+          <NavLink to="/data">Data</NavLink>
+          <NavLink to="/create">Create Sensor</NavLink>
+          <NavLink to="/about">About</NavLink>
+        </div>
       </header>
       <body>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/data">Data</Link>
-          </li>
-        </ul>
         
         <Routes>
-          {/* <Route exact path='/' element={< Home />}></Route> */}
           <Route exact path='/about' element={< About />}></Route>
           <Route path='/data/*' element={< Data />}></Route>
+          <Route exact path='/create' element={< DataForm />}></Route>
         </Routes>
       </body>
     </Router>
